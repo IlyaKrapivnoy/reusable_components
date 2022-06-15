@@ -3,12 +3,11 @@ import React, { useState } from "react";
 const Accordion = () => {
   const [expand, setExpand] = useState(false);
   const toggleExpand = () => setExpand((prevExpand) => !prevExpand);
-  console.log(expand);
 
   return (
-    <div>
+    <div className="accordion">
       <button onClick={toggleExpand}>Header +</button>
-      <div>this is content</div>
+      {expand && <div className="content">this is content</div>}
     </div>
   );
 };
