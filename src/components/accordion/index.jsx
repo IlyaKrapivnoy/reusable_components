@@ -1,5 +1,6 @@
 import React, { createContext, useContext } from "react";
 import { useToggle } from "../../hooks/useToggle";
+import { FaChevronDown, FaChevronRight } from "react-icons/fa";
 
 // create context API
 const AccordionContext = createContext();
@@ -25,11 +26,15 @@ const Accordion = (props) => {
 };
 
 const AccordionHeader = ({ children }) => {
-  const { expand, toggleExpand } = useContext(AccordionContext);
+  const { toggleExpand } = useContext(AccordionContext);
 
   return (
     <button onClick={toggleExpand}>
-      {children} <AccordionIcon />
+      {children}{" "}
+      <AccordionIcon
+        iconOpened={<FaChevronRight />}
+        iconClosed={<FaChevronDown />}
+      />
     </button>
   );
 };
@@ -40,10 +45,10 @@ const AccordionContent = ({ children }) => {
   return <>{expand && <div className="content">{children}</div>}</>;
 };
 
-const AccordionIcon = () => {
+const AccordionIcon = ({ iconOpened, iconClosed }) => {
   const { expand } = useContext(AccordionContext);
 
-  return <span>{expand ? "-" : "+"}</span>;
+  return <span>{expand ? iconOpened : iconClosed}</span>;
 };
 
 export default Accordion;
