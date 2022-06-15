@@ -16,23 +16,40 @@
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 30px;
 }
 
-.App-link {
-  color: #61dafb;
+.App {
+    font-family: sans-serif;
+    text-align: center;
+}
+:root {
+    --primary-color: #ccd1e4;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.accordion {
+    max-width: 15rem;
+    margin-bottom: 0.5rem;
+}
+
+.accordion button {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accordion button:hover {
+    background: var(--primary-color);
+}
+
+.accordion .content {
+    padding: 0.5rem;
+    background: #f7f7f7;
 }
