@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Accordion />
+        <Accordion title="Product Info" content="This is my content" />
         <Editable />
       </header>
     </div>
