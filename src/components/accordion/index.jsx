@@ -1,24 +1,33 @@
-import React from "react";
+import React, { createContext, useContext } from "react";
 import { useToggle } from "../../hooks/useToggle";
+
+// create context API
+const AccordionContext = createContext();
+const { Provider } = AccordionContext;
 
 const Accordion = (props) => {
   const { title, content } = props;
   const { status: expand, toggleStatus: toggleExpand } = useToggle();
 
+  const value = {
+    expand,
+    toggleExpand,
+  };
+
   return (
-    <div className="accordion">
-      <AccordionHeader
-        title={title}
-        toggleExpand={toggleExpand}
-        expand={expand}
-      />
-      <AccordionContent expand={expand} content={content} />
-    </div>
+    <Provider value={value}>
+      <div className="accordion">
+        <AccordionHeader title={title} />
+        <AccordionContent expand={expand} content={content} />
+      </div>
+    </Provider>
   );
 };
 
 const AccordionHeader = (props) => {
-  const { title, toggleExpand, expand } = props;
+  const { title } = props;
+  const { expand, toggleExpand } = useContext(AccordionContext);
+
   return (
     <button onClick={toggleExpand}>
       {title} <span>{expand ? "-" : "+"}</span>
