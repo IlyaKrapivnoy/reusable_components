@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import { useToggle } from "../../hooks/useToggle";
 
 const Accordion = () => {
-  const [expand, setExpand] = useState(false);
-  const toggleExpand = () => setExpand((prevExpand) => !prevExpand);
+  const { status: expand, toggleStatus: toggleExpand } = useToggle();
 
   return (
     <div className="accordion">

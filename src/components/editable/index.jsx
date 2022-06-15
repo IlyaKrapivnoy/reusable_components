@@ -1,10 +1,10 @@
 import { useState } from "react";
+import { useToggle } from "../../hooks/useToggle";
 
 const Editable = () => {
-  const [editable, setEditable] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const { status: editable, toggleStatus: toggleEditable } = useToggle();
 
-  const toggleEditable = () => setEditable((prevEditable) => !prevEditable);
   const handleInputValue = (e) => {
     setInputValue(e.target.value);
   };
