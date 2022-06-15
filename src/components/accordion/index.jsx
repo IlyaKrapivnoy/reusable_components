@@ -29,7 +29,7 @@ const AccordionHeader = ({ children }) => {
 
   return (
     <button onClick={toggleExpand}>
-      {children} <span>{expand ? "-" : "+"}</span>
+      {children} <AccordionIcon />
     </button>
   );
 };
@@ -38,6 +38,12 @@ const AccordionContent = ({ children }) => {
   const { expand } = useContext(AccordionContext);
 
   return <>{expand && <div className="content">{children}</div>}</>;
+};
+
+const AccordionIcon = () => {
+  const { expand } = useContext(AccordionContext);
+
+  return <span>{expand ? "-" : "+"}</span>;
 };
 
 export default Accordion;
