@@ -17,20 +17,19 @@ const Accordion = (props) => {
   return (
     <Provider value={value}>
       <div className="accordion">
-        <AccordionHeader title={title} />
+        <AccordionHeader>{title}</AccordionHeader>
         <AccordionContent content={content} />
       </div>
     </Provider>
   );
 };
 
-const AccordionHeader = (props) => {
-  const { title } = props;
+const AccordionHeader = ({ children }) => {
   const { expand, toggleExpand } = useContext(AccordionContext);
 
   return (
     <button onClick={toggleExpand}>
-      {title} <span>{expand ? "-" : "+"}</span>
+      {children} <span>{expand ? "-" : "+"}</span>
     </button>
   );
 };
