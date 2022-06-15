@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState } from "react";
 
 const Accordion = () => {
-    return (
-        <div>
-            Accordion
-        </div>
-    );
+  const [expand, setExpand] = useState(false);
+  const toggleExpand = () => setExpand((prevExpand) => !prevExpand);
+  console.log(expand);
+
+  return (
+    <div>
+      <button onClick={toggleExpand}>Header +</button>
+      <div>this is content</div>
+    </div>
+  );
 };
 
 export default Accordion;
