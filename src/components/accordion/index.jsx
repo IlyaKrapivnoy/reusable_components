@@ -12,7 +12,7 @@ const Accordion = (props) => {
         toggleExpand={toggleExpand}
         expand={expand}
       />
-      {expand && <div className="content">{content}</div>}
+      <AccordionContent expand={expand} content={content} />
     </div>
   );
 };
@@ -24,6 +24,11 @@ const AccordionHeader = (props) => {
       {title} <span>{expand ? "-" : "+"}</span>
     </button>
   );
+};
+
+const AccordionContent = (props) => {
+  const { expand, content } = props;
+  return <>{expand && <div className="content">{content}</div>}</>;
 };
 
 export default Accordion;
