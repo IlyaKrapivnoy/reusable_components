@@ -18,7 +18,7 @@ const Accordion = (props) => {
     <Provider value={value}>
       <div className="accordion">
         <AccordionHeader title={title} />
-        <AccordionContent expand={expand} content={content} />
+        <AccordionContent content={content} />
       </div>
     </Provider>
   );
@@ -36,7 +36,9 @@ const AccordionHeader = (props) => {
 };
 
 const AccordionContent = (props) => {
-  const { expand, content } = props;
+  const { content } = props;
+  const { expand } = useContext(AccordionContext);
+
   return <>{expand && <div className="content">{content}</div>}</>;
 };
 
