@@ -6,7 +6,9 @@ const Accordion = () => {
 
   return (
     <div className="accordion">
-      <button onClick={toggleExpand}>Header +</button>
+      <button onClick={toggleExpand}>
+        Header <span>{expand ? "-" : "+"}</span>
+      </button>
       {expand && <div className="content">this is content</div>}
     </div>
   );
