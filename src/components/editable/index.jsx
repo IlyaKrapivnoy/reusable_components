@@ -3,7 +3,7 @@ import { useToggle } from "../../hooks/useToggle";
 
 const Editable = () => {
   const [inputValue, setInputValue] = useState("");
-  const { status: editable, toggleStatus: toggleEditable } = useToggle();
+  const { status: editable, toggleStatus: toggleEditable } = useToggle(false);
 
   const handleInputValue = (e) => {
     setInputValue(e.target.value);
