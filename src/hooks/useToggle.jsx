@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-export const useToggle = () => {
-  const [status, setStatus] = useState(false);
-  const toggleStatus = () => setStatus((prevStatus) => !prevStatus);
+export const useToggle = (initialValue) => {
+    const [status, setStatus] = useState(initialValue);
+    const toggleStatus = () => setStatus((prevStatus) => !prevStatus);
 
-  return { status, toggleStatus };
+    return { status, toggleStatus };
 };
