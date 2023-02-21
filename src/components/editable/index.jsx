@@ -14,6 +14,8 @@ const Editable = () => {
     toggleEditable();
   };
 
+  const Title = ({ children }) => <>{children}</>;
+
   return (
     <form onSubmit={handleSubmit}>
       {editable ? (
@@ -22,7 +24,7 @@ const Editable = () => {
           <input type="text" value={inputValue} onChange={handleInputValue} />
         </label>
       ) : (
-        <>Title {inputValue}</>
+        <Title>Title {inputValue}</Title>
       )}
       <br />
       <button onClick={toggleEditable}>{editable ? "Submit" : "Edit"}</button>
