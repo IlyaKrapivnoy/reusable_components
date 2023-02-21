@@ -6,8 +6,7 @@ import { FaChevronDown, FaChevronRight } from "react-icons/fa";
 const AccordionContext = createContext();
 const { Provider } = AccordionContext;
 
-const Accordion = (props) => {
-  const { title, content } = props;
+const Accordion = React.memo(({ title, content }) => {
   const { status: expand, toggleStatus: toggleExpand } = useToggle();
 
   const value = {
@@ -23,7 +22,7 @@ const Accordion = (props) => {
       </div>
     </Provider>
   );
-};
+});
 
 const AccordionHeader = ({ children }) => {
   const { toggleExpand } = useContext(AccordionContext);
@@ -41,13 +40,11 @@ const AccordionHeader = ({ children }) => {
 
 const AccordionContent = ({ children }) => {
   const { expand } = useContext(AccordionContext);
-
-  return <>{expand && <div className="content">{children}</div>}</>;
+  return expand ? <div className="content">{children}</div> : null;
 };
 
 const AccordionIcon = ({ iconOpened, iconClosed }) => {
   const { expand } = useContext(AccordionContext);
-
   return <span>{expand ? iconOpened : iconClosed}</span>;
 };
 
