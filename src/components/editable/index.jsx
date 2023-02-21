@@ -6,11 +6,16 @@ const Editable = () => {
   const { status: editable, toggleStatus: toggleEditable } = useToggle(false);
 
   const handleInputValue = (e) => {
-    setInputValue(e.target.value);
+    setInputValue(e.target?.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    toggleEditable();
   };
 
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       {editable ? (
         <label>
           Title
@@ -21,7 +26,7 @@ const Editable = () => {
       )}
       <br />
       <button onClick={toggleEditable}>{editable ? "Submit" : "Edit"}</button>
-    </div>
+    </form>
   );
 };
 
